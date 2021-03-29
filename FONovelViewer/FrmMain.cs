@@ -72,13 +72,13 @@ namespace FONovelViewer
                         chapterNum = Convert.ToInt32(lines[0]);
                         lineNum = Convert.ToInt32(lines[1]);
                     }
-                    if (MessageBox.Show(string.Format("上次[{0}]看到第[{1}]章,是否继续?", content, chapterNum)
-                        , "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
-                    {
-                        string novelpath = Path.Combine(StoragePath, content);
-                        LoadNovel(novelpath, chapterNum);
-                        lbchapters.Visible = false;
-                    }
+                    //if (MessageBox.Show(string.Format("上次[{0}]看到第[{1}]章,是否继续?", content, chapterNum)
+                    //    , "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    //{
+                    string novelpath = Path.Combine(StoragePath, content);
+                    LoadNovel(novelpath, chapterNum);
+                    lbchapters.Visible = false;
+                    //}
                 }
             }
         }
@@ -115,6 +115,7 @@ namespace FONovelViewer
             {
                 tbContent.Text = novel.Chapters[num].Content;
             }
+            lbchapters.SelectedIndex = num;
         }
 
         private void LoadChapter(string content)
@@ -191,11 +192,21 @@ namespace FONovelViewer
 
         private void UpdateInfo()
         {
+            lbchapters.SelectedIndex = chapterNum;
             tbContent.Text = novel.Chapters[chapterNum].Content;
             this.Text = novel.Chapters[chapterNum].Name;
             string path = Path.Combine(CachePath, novel.Name + ".txt");
             File.WriteAllText(path, chapterNum + "\r\n" + lineNum);
         }
 
+        private void lbchapters_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbchapters.SelectedIndex != -1)
+            {
+                chapterNum = lbchapters.SelectedIndex;
+                lineNum = 0;
+                UpdateInfo();
+            }
+        }
     }
 }

@@ -50,6 +50,7 @@ namespace FONovelViewer
             this.lbchapters.Name = "lbchapters";
             this.lbchapters.Size = new System.Drawing.Size(160, 861);
             this.lbchapters.TabIndex = 3;
+            this.lbchapters.SelectedIndexChanged += new System.EventHandler(this.lbchapters_SelectedIndexChanged);
             // 
             // splitter1
             // 
