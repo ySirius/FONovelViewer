@@ -33,10 +33,10 @@ namespace FONovelViewer
             this.lbchapters = new System.Windows.Forms.ListBox();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnLoad = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPre = new System.Windows.Forms.Button();
             this.tbContent = new System.Windows.Forms.RichTextBox();
-            this.btnLoad = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,18 +45,20 @@ namespace FONovelViewer
             this.lbchapters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(232)))), ((int)(((byte)(207)))));
             this.lbchapters.Dock = System.Windows.Forms.DockStyle.Left;
             this.lbchapters.FormattingEnabled = true;
-            this.lbchapters.ItemHeight = 12;
+            this.lbchapters.ItemHeight = 18;
             this.lbchapters.Location = new System.Drawing.Point(0, 0);
+            this.lbchapters.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lbchapters.Name = "lbchapters";
-            this.lbchapters.Size = new System.Drawing.Size(160, 861);
+            this.lbchapters.Size = new System.Drawing.Size(238, 1292);
             this.lbchapters.TabIndex = 3;
             this.lbchapters.SelectedIndexChanged += new System.EventHandler(this.lbchapters_SelectedIndexChanged);
             // 
             // splitter1
             // 
-            this.splitter1.Location = new System.Drawing.Point(160, 0);
+            this.splitter1.Location = new System.Drawing.Point(238, 0);
+            this.splitter1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(10, 861);
+            this.splitter1.Size = new System.Drawing.Size(15, 1292);
             this.splitter1.TabIndex = 4;
             this.splitter1.TabStop = false;
             // 
@@ -66,18 +68,32 @@ namespace FONovelViewer
             this.panel1.Controls.Add(this.btnNext);
             this.panel1.Controls.Add(this.btnPre);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(170, 0);
+            this.panel1.Location = new System.Drawing.Point(253, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(614, 50);
+            this.panel1.Size = new System.Drawing.Size(923, 75);
             this.panel1.TabIndex = 5;
             this.panel1.Click += new System.EventHandler(this.Panel1_Click);
+            // 
+            // btnLoad
+            // 
+            this.btnLoad.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnLoad.Location = new System.Drawing.Point(10, 18);
+            this.btnLoad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(123, 45);
+            this.btnLoad.TabIndex = 2;
+            this.btnLoad.Text = "加载";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.TsmOpen_Click);
             // 
             // btnNext
             // 
             this.btnNext.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnNext.Location = new System.Drawing.Point(318, 12);
+            this.btnNext.Location = new System.Drawing.Point(478, 18);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(82, 30);
+            this.btnNext.Size = new System.Drawing.Size(123, 45);
             this.btnNext.TabIndex = 1;
             this.btnNext.Text = "下一篇";
             this.btnNext.UseVisualStyleBackColor = true;
@@ -86,9 +102,10 @@ namespace FONovelViewer
             // btnPre
             // 
             this.btnPre.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnPre.Location = new System.Drawing.Point(214, 12);
+            this.btnPre.Location = new System.Drawing.Point(322, 18);
+            this.btnPre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPre.Name = "btnPre";
-            this.btnPre.Size = new System.Drawing.Size(82, 30);
+            this.btnPre.Size = new System.Drawing.Size(123, 45);
             this.btnPre.TabIndex = 0;
             this.btnPre.Text = "上一篇";
             this.btnPre.UseVisualStyleBackColor = true;
@@ -99,36 +116,27 @@ namespace FONovelViewer
             this.tbContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(232)))), ((int)(((byte)(207)))));
             this.tbContent.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbContent.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tbContent.Location = new System.Drawing.Point(170, 50);
+            this.tbContent.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbContent.Location = new System.Drawing.Point(253, 75);
+            this.tbContent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbContent.Name = "tbContent";
             this.tbContent.ReadOnly = true;
-            this.tbContent.Size = new System.Drawing.Size(614, 811);
+            this.tbContent.Size = new System.Drawing.Size(923, 1217);
             this.tbContent.TabIndex = 6;
             this.tbContent.Text = "";
             this.tbContent.Click += new System.EventHandler(this.TbContent_Click);
             // 
-            // btnLoad
-            // 
-            this.btnLoad.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnLoad.Location = new System.Drawing.Point(6, 12);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(82, 30);
-            this.btnLoad.TabIndex = 2;
-            this.btnLoad.Text = "加载";
-            this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new System.EventHandler(this.TsmOpen_Click);
-            // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 861);
+            this.ClientSize = new System.Drawing.Size(1176, 1292);
             this.Controls.Add(this.tbContent);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.lbchapters);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmMain";
             this.Text = "阅读器";
             this.Load += new System.EventHandler(this.FrmMain_Load);

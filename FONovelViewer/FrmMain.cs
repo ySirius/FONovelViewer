@@ -92,7 +92,8 @@ namespace FONovelViewer
                 if (File.Exists(dlg.FileName))
                 {
                     string newPath = Path.Combine(TmpFolderPath, "storage", Path.GetFileName(dlg.FileName));
-                    File.Copy(dlg.FileName, newPath, true);
+                    if (!File.Exists(newPath))
+                        File.Copy(dlg.FileName, newPath, true);
                     LoadNovel(dlg.FileName);
                     File.WriteAllText(Path.Combine(TmpFolderPath, CacheFile), Path.GetFileName(dlg.FileName));
                 }
@@ -109,13 +110,43 @@ namespace FONovelViewer
         {
             novel = new Novel();
             novel.Name = Path.GetFileNameWithoutExtension(path);
-            LoadChapter(File.ReadAllText(path));
+            //LoadChapter(File.ReadAllText(path));
+
+            ReadFile(path);
             UpdateListBox();
             if (novel.Chapters.Count > num)
             {
                 tbContent.Text = novel.Chapters[num].Content;
             }
             lbchapters.SelectedIndex = num;
+        }
+
+
+        private void ReadFile(string filePath, int bufferSize = 8192)
+        {
+            using (FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize))
+            {
+                using (StreamReader reader = new StreamReader(fileStream, Encoding.GetEncoding("GB2312")))
+                {
+                    string strLine;
+                    Chapter chapter = new Chapter();
+                    while ((strLine = reader.ReadLine()) != null)
+                    {
+                        Regex reg = new Regex("第(.*?)章");
+                        if (reg.IsMatch(strLine))
+                        {
+                            if (strLine.Length < 20)
+                            {
+                                chapter = new Chapter();
+                                string name = strLine.Trim().Replace("\r\n", "").Replace("\r", "").Replace("\n", "");
+                                chapter.Name = name;
+                                novel.Chapters.Add(chapter);
+                            }
+                        }
+                        chapter.Content += strLine + "\r\n";
+                    }
+                }
+            }
         }
 
         private void LoadChapter(string content)
